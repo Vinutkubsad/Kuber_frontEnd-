@@ -1,0 +1,47 @@
+
+/* Dashboard design */
+
+/* Grid box */
+/* :root {
+  --primary: #ddd;
+  --dark: #333;
+  --light: #fff;
+  --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+} */
+
+/* Boxes */
+.boxes {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.box {
+  background: #ddd;
+  text-align: center;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+
+/* Graph Inf0 */
+.graph-info {
+  margin-top: 2rem;
+  background: #ddd;
+  box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 3rem;
+}
+
+/* tables */
+.wrap-table {
+  background: #ddd;
+  margin-top: 3rem;
+  box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+
+.editable-row-operations a {
+  margin-right: 8px;
+}
+

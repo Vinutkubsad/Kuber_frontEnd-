@@ -1,0 +1,104 @@
+<!-- Dasboard desgin -->
+<div style="padding:24px; background: #fff; min-height: 600px;">
+
+  <!-- Boxes section -->
+  <section class="boxes">
+    <div class="box">
+      <i class="fas fa-chart-pie fa-4x"></i>
+      <h3> Charity Analytics </h3>
+      <p>Total amount</p>
+      <h2>$21.02/day</h2>
+    </div>
+    <div class="box">
+      <i class="fas fa-users fa-4x"></i>
+      <h3> Users active </h3>
+      <p>Total Users</p>
+      <h2>25K</h2>
+    </div>
+    <div class="box">
+      <i class="fab fa-accusoft fa-4x"></i>
+      <h3> Charities active </h3>
+      <p>Total charities</p>
+      <h2>21k</h2>
+    </div>
+  </section>
+
+  <!-- Chart details -->
+  <section class="graph-info">
+    <div class="bar-graph">
+      <div style="display: block">
+        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
+          [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+      </div>
+      <button (click)="randomize()">Update</button>
+    </div>
+    <div class="wrap-pai-graph">
+      <div style="display: block">
+        <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
+          (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- Charity tables -->
+  <section class="wrap-table">
+    <div class="charity-tab">
+      <nz-table #editRowTable nzBordered [nzData]="dataSet">
+        <thead>
+          <tr>
+            <th nzWidth="25%">Name</th>
+            <th nzWidth="15%">Total funds</th>
+            <th nzWidth="40%">Address</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of editRowTable.data">
+            <td>
+              <div class="editable-cell">
+                <div class="editable-cell-text-wrapper">
+                  <ng-container *ngIf="!editCache[data.key].edit">
+                    {{data.name}}
+                  </ng-container>
+                  <ng-container *ngIf="editCache[data.key].edit">
+                    <input type="text" nz-input [(ngModel)]="editCache[data.key].data.name">
+                  </ng-container>
+                </div>
+              </div>
+            </td>
+            <td>
+              <ng-container *ngIf="!editCache[data.key].edit">
+                {{data.totalfunds}}
+              </ng-container>
+              <ng-container *ngIf="editCache[data.key].edit">
+                <input type="text" nz-input [(ngModel)]="editCache[data.key].data.totalfunds">
+              </ng-container>
+            </td>
+            <td>
+              <ng-container *ngIf="!editCache[data.key].edit">
+                {{data.address}}
+              </ng-container>
+              <ng-container *ngIf="editCache[data.key].edit">
+                <input type="text" nz-input [(ngModel)]="editCache[data.key].data.address">
+              </ng-container>
+            </td>
+            <td>
+              <div class="editable-row-operations">
+                <ng-container *ngIf="!editCache[data.key].edit">
+                  <a (click)="startEdit(data.key)">Edit</a>
+                  <a (click)="startDelete(data.key)">Delete</a>
+                </ng-container>
+                <ng-container *ngIf="editCache[data.key].edit">
+                  <a (click)="saveEdit(data.key)">Save</a>
+                  <nz-popconfirm [nzTitle]="'Sure to cancel?'" (nzOnConfirm)="cancelEdit(data.key)">
+                    <a nz-popconfirm>Cancel</a>
+                  </nz-popconfirm>
+                </ng-container>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </section>
+</div>
