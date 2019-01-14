@@ -1,3 +1,27 @@
-<p>
-  charity-tables works!
-</p>
+<section class="table-wraps">
+  <div class="first-tabel">
+  <nz-mention nzPlacement="top" [nzSuggestions]="suggestions" (nzOnSelect)="onSelect($event)">
+      <input nzMentionTrigger nz-input [(ngModel)]="searchString" placeholder="Search.." style="margin:1%; width: 50%;">
+    </nz-mention>
+    <nz-table #borderedTable nzBordered [nzData]="dataSet">
+      <thead>
+        <tr>
+          <th>Charity Name</th>
+          <th>Address</th>
+          <th>Progress</th>
+          <th>Funds</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of borderedTable.data |  filter : 'name' : searchString">
+          <td style="width:10%;">{{data.name}}</td>
+          <td style="width:30%;">{{data.address}}</td>
+          <td style="width: 40%;">
+            <nz-progress [nzPercent]="data.progress"></nz-progress>
+          </td>
+          <td>{{data.funds}}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</section>

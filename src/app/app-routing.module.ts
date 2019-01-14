@@ -7,6 +7,7 @@ import { CharityTablesComponent } from './Tables/charity-tables/charity-tables.c
 import { UserTablesComponent } from './Tables/user-tables/user-tables.component';
 import { UserChartsComponent } from './Charts/user-charts/user-charts.component';
 import { CharityChartsComponent } from './Charts/charity-charts/charity-charts.component';
+import { AddCharityComponent } from './add-charity/add-charity.component';
 
 
 @NgModule({
@@ -22,12 +23,13 @@ import { CharityChartsComponent } from './Charts/charity-charts/charity-charts.c
 export class AppRoutingModule { }
 
 export const routes: Routes = [
-  { path: '', component: AdminLoginComponent },
   { path: 'adminlogin', component: AdminLoginComponent },
+  { path: '', component: AdminLoginComponent },
   { path:'dashboard', component: DashboardComponent},
   { path: 'usertables', component: UserTablesComponent },
   { path: 'usercharts', component: UserChartsComponent },
   { path: 'charitytable', component: CharityTablesComponent },
   { path: 'charitycharts', component: CharityChartsComponent },
+  { path: 'addcharity', component: AddCharityComponent },
   { path: '*', component: AdminLoginComponent }
 ];

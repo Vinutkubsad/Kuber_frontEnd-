@@ -1,0 +1,14 @@
+section {
+  margin: 2rem;
+  background-color: white;
+}
+
+.first-tabel {
+  background: #ddd;
+  box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+
+.input {
+  width: 40%;
+  margin: 1.6rem
+}
