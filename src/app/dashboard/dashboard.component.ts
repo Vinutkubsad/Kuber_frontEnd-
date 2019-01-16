@@ -10,19 +10,12 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
+  public searchString: string;
+
   constructor( private router: Router) { }
 
-  ngOnInit(): void {
-    for (let i = 0; i < 100; i++) {
-      this.dataSet.push({
-        key         : i.toString(),
-        name        : `Edrward ${i}`,
-        totalfunds  : 21231.231,
-        address     : `London Park no. ${i}`
-      });
-    }
-    this.updateEditCache();
-  }
+  ngOnInit() { }
+  
 
   charityTable() {
     this.router.navigate(['charitytabels'])
@@ -81,34 +74,101 @@ export class DashboardComponent implements OnInit {
   public doughnutChartType:string = 'doughnut';
  
   // Charity tables
-  i = 1;
-  editCache = {};
-  dataSet = [];
 
-  startEdit(key: string): void {
-    this.editCache[ key ].edit = true;
+  onChange(value: string): void {
+    console.log(value);
   }
 
-  cancelEdit(key: string): void {
-    this.editCache[ key ].edit = false;
+  onSelect(suggestion: string): void {
+    console.log(`onSelect ${suggestion}`);
   }
 
-  saveEdit(key: string): void {
-    const index = this.dataSet.findIndex(item => item.key === key);
-    Object.assign(this.dataSet[ index ], this.editCache[ key ].data);
-    // this.dataSet[ index ] = this.editCache[ key ].data;
-    this.editCache[ key ].edit = false;
-  }
+  charitySet = [
+    {
+      key    : '1',
+      name   : 'Heart foundation',
+      address: 'New York No. 1 Lake Park',
+      funds: '$',
+      progress: '30',
+      rating: 2.1
+    },
+    {
+      key    : '2',
+      name   : 'Accion Foundation',
+      funds: '$',
+      address: 'London No. 1 Lake Park',
+      progress: '50',
+      rating: 2.5
+    },
+    {
+      key    : '3',
+      name   : 'Kuber Foundation',
+      funds: '$',
+      address: 'Sidney No. 1 Lake Park',
+      progress: '30',
+      rating: 1
+    },
+    {
+      key    : '2',
+      name   : 'Accion Foundation',
+      funds: '$',
+      address: 'London No. 1 Lake Park',
+      progress: '50',
+      rating: 4
+    },
+    {
+      key    : '2',
+      name   : 'Accion Foundation',
+      funds: '$',
+      address: 'London No. 1 Lake Park',
+      progress: '50',
+      rating: 3
+    },
+  ];
 
-  updateEditCache(): void {
-    this.dataSet.forEach(item => {
-      if (!this.editCache[ item.key ]) {
-        this.editCache[ item.key ] = {
-          edit: false,
-          data: { ...item }
-        };
-      }
-    });
-  }
-
+  // user-detail-table
+  userTable = [
+    {
+      key    : '1',
+      name   : 'John Brown',
+      age    : 32,
+      address: 'New York No. 1 Lake Park',
+      fund   : '$200'
+    },
+    {
+      key    : '2',
+      name   : 'Jim Green',
+      age    : 42,
+      address: 'London No. 1 Lake Park',
+      fund   : '$200',
+    },
+    {
+      key    : '3',
+      name   : 'Joe Black',
+      age    : 32,
+      address: 'Sidney No. 1 Lake Park',
+      fund   : '$200'
+    },
+    {
+      key    : '3',
+      name   : 'Joe Black',
+      age    : 32,
+      address: 'Sidney No. 1 Lake Park',
+      fund   : '$200'
+    },
+    {
+      key    : '3',
+      name   : 'Joe Black',
+      age    : 32,
+      address: 'Sidney No. 1 Lake Park',
+      fund   : '$200'
+    },
+    {
+      key    : '3',
+      name   : 'Joe Black',
+      age    : 32,
+      address: 'Sidney No. 1 Lake Park',
+      fund   : '$200'
+    }
+  ];
 }

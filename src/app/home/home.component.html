@@ -1,6 +1,6 @@
 <!-- NG-ZORRO -->
 <nz-layout >
-  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="triggerTemplate" >
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="triggerTemplate" st >
     <div class="logo"></div>
     <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
       <li nz-submenu>
@@ -26,13 +26,19 @@
         </ul>
       </li>
     </ul>
-      <!-- <button [routerLink]="[ '/addcharity']" style="padding: 10px 30px;margin-top: 0.6rem;margin-left: 1.5rem;">Add Charity</button> -->
   </nz-sider>
   <nz-layout>
     <nz-header style="background: #ddd; padding:0;">
       <i class="trigger" nz-icon [type]="isCollapsed?'menu-unfold':'menu-fold'" (click)="isCollapsed=!isCollapsed"></i>
+      <nz-dropdown-button (nzClick)="log()">
+        Admin
+        <ul nz-menu>
+          <li nz-menu-item>Edit Profil</li>
+          <li nz-menu-item>Help</li>
+          <li nz-menu-item>Logout</li>
+        </ul>
+      </nz-dropdown-button>
     </nz-header>
-
     <nz-content style="margin:0 16px;">
 
       <router-outlet></router-outlet>
@@ -41,4 +47,4 @@
     <nz-footer style="text-align: center;"> AccionLabs ©2018 KuberApp </nz-footer>
   </nz-layout>
 </nz-layout>
-<!-- <ng-template #trigger> <i nz-icon type="up"></i> </ng-template> -->
+<ng-template #trigger> <i nz-icon type="up"></i> </ng-template>

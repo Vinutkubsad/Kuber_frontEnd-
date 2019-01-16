@@ -1,23 +1,22 @@
 <!-- Dasboard desgin -->
 <div style="padding:24px; background: #fff; min-height: 600px;">
-
   <!-- Boxes section -->
   <section class="boxes">
     <div class="box">
       <i class="fas fa-chart-pie fa-4x"></i>
-      <h3> Charity Analytics </h3>
+      <h3>Charity Analytics</h3>
       <p>Total amount</p>
       <h2>$21.02/day</h2>
     </div>
     <div class="box">
       <i class="fas fa-users fa-4x"></i>
-      <h3> Users active </h3>
+      <h3>Users active</h3>
       <p>Total Users</p>
       <h2>25K</h2>
     </div>
     <div class="box">
       <i class="fab fa-accusoft fa-4x"></i>
-      <h3> Charities active </h3>
+      <h3>Charities active</h3>
       <p>Total charities</p>
       <h2>21k</h2>
     </div>
@@ -44,63 +43,63 @@
   <!-- Charity tables -->
   <section class="wrap-table">
     <div class="charity-tab">
-      <h1>Charity details</h1>
-      <nz-table #editRowTable nzBordered [nzData]="dataSet">
+      <p>Charity details</p>
+      <nz-mention nzPlacement="top" [nzSuggestions]="suggestions" (nzOnSelect)="onSelect($event)">
+        <input nzMentionTrigger nz-input [(ngModel)]="searchString" placeholder="Search.." style="margin:1%; width: 50%;" />
+      </nz-mention>
+      <nz-table #borderedTable nzBordered [nzData]="charitySet">
         <thead>
           <tr>
-            <th nzWidth="25%">Charity Name</th>
-            <th nzWidth="15%">Total funds</th>
-            <th nzWidth="40%">Address</th>
-            <th>Action</th>
+            <th>Charity Name</th>
+            <th>Address</th>
+            <th>Progress</th>
+            <th>Funds</th>
+            <th>Ratings</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let data of editRowTable.data">
-            <td>
-              <div class="editable-cell">
-                <div class="editable-cell-text-wrapper">
-                  <ng-container *ngIf="!editCache[data.key].edit">
-                    {{data.name}}
-                  </ng-container>
-                  <ng-container *ngIf="editCache[data.key].edit">
-                    <input type="text" nz-input [(ngModel)]="editCache[data.key].data.name">
-                  </ng-container>
-                </div>
-              </div>
+          <tr *ngFor="
+              let data of (borderedTable.data | filter: 'name':searchString)
+            ">
+            <td style="width:10%;">{{ data.name }}</td>
+            <td style="width:30%;">{{ data.address }}</td>
+            <td style="width: 35%;">
+              <nz-progress [nzPercent]="data.progress"></nz-progress>
             </td>
+            <td>{{ data.funds }}</td>
             <td>
-              <ng-container *ngIf="!editCache[data.key].edit">
-                {{data.totalfunds}}
-              </ng-container>
-              <ng-container *ngIf="editCache[data.key].edit">
-                <input type="text" nz-input [(ngModel)]="editCache[data.key].data.totalfunds">
-              </ng-container>
-            </td>
-            <td>
-              <ng-container *ngIf="!editCache[data.key].edit">
-                {{data.address}}
-              </ng-container>
-              <ng-container *ngIf="editCache[data.key].edit">
-                <input type="text" nz-input [(ngModel)]="editCache[data.key].data.address">
-              </ng-container>
-            </td>
-            <td>
-              <div class="editable-row-operations">
-                <ng-container *ngIf="!editCache[data.key].edit">
-                  <a (click)="startEdit(data.key)">Edit</a>
-                  <a (click)="startDelete(data.key)">Delete</a>
-                </ng-container>
-                <ng-container *ngIf="editCache[data.key].edit">
-                  <a (click)="saveEdit(data.key)">Save</a>
-                  <nz-popconfirm [nzTitle]="'Sure to cancel?'" (nzOnConfirm)="cancelEdit(data.key)">
-                    <a nz-popconfirm>Cancel</a>
-                  </nz-popconfirm>
-                </ng-container>
-              </div>
+              <nz-rate [ngModel]="data.rating" nzDisabled></nz-rate>`
             </td>
           </tr>
         </tbody>
       </nz-table>
     </div>
+  </section>
+
+  <section class="user-dteail">
+    <p>User Details</p>
+    <nz-table #basicTable [nzData]="userTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Address</th>
+          <th>Donated Amount</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td>{{ data.name }}</td>
+          <td>{{ data.age }}</td>
+          <td>{{ data.address }}</td>
+          <td>{{ data.fund }}</td>
+          <td>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a>Delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
   </section>
 </div>

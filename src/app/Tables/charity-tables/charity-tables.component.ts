@@ -7,57 +7,48 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CharityTablesComponent implements OnInit {
 
-  public searchString: string;
-
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    for (let i = 0; i < 100; i++) {
+      this.dataSet.push({
+        key         : i.toString(),
+        name        : `Edrward ${i}`,
+        totalfunds  : 21231.231,
+        address     : `London Park no. ${i}`
+      });
+    }
+    this.updateEditCache();
+  } 
+
+  i = 1;
+  editCache = {};
+  dataSet = [];
+
+  startEdit(key: string): void {
+    this.editCache[ key ].edit = true;
   }
 
-  onChange(value: string): void {
-    console.log(value);
+  cancelEdit(key: string): void {
+    this.editCache[ key ].edit = false;
   }
 
-  onSelect(suggestion: string): void {
-    console.log(`onSelect ${suggestion}`);
+  saveEdit(key: string): void {
+    const index = this.dataSet.findIndex(item => item.key === key);
+    Object.assign(this.dataSet[ index ], this.editCache[ key ].data);
+    // this.dataSet[ index ] = this.editCache[ key ].data;
+    this.editCache[ key ].edit = false;
   }
 
-  dataSet = [
-    {
-      key    : '1',
-      name   : 'Heart foundation',
-      address: 'New York No. 1 Lake Park',
-      funds: '$',
-      progress: '30'
-    },
-    {
-      key    : '2',
-      name   : 'Accion Foundation',
-      funds: '$',
-      address: 'London No. 1 Lake Park',
-      progress: '50'
-    },
-    {
-      key    : '3',
-      name   : 'Kuber Foundation',
-      funds: '$',
-      address: 'Sidney No. 1 Lake Park',
-      progress: '30'
-    },
-    {
-      key    : '2',
-      name   : 'Accion Foundation',
-      funds: '$',
-      address: 'London No. 1 Lake Park',
-      progress: '50'
-    },
-    {
-      key    : '2',
-      name   : 'Accion Foundation',
-      funds: '$',
-      address: 'London No. 1 Lake Park',
-      progress: '50'
-    },
-  ];
+  updateEditCache(): void {
+    this.dataSet.forEach(item => {
+      if (!this.editCache[ item.key ]) {
+        this.editCache[ item.key ] = {
+          edit: false,
+          data: { ...item }
+        };
+      }
+    });
+  }
 
 }

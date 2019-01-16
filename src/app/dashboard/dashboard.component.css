@@ -42,6 +42,17 @@
   box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
 }
 
+.user-dteail{
+  background: #ddd;
+  margin-top: 3rem;
+  box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+
+p {
+  margin: 1.6rem;
+  font-size: 1.6rem;
+}
+
 .editable-row-operations a {
   margin-right: 8px;
 }

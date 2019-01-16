@@ -34,3 +34,9 @@ body {
   position: sticky;
   top: 0;
 }
+
+/* Profile dropdown */
+nz-dropdown-button {
+  margin-right: 25px;
+  float: right;
+}
