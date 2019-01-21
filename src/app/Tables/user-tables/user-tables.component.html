@@ -1,3 +1,35 @@
-<p>
-  user-tables works!
-</p>
+
+<section>
+  <nz-collapse nzAccordion>
+    <nz-collapse-panel *ngFor="let panel of panels" [nzHeader]="panel.name" [nzActive]="panel.active">
+      <nz-table #basicTable [nzData]="UserName">
+          <thead>
+            <tr>
+              <th>Charity name</th>
+              <th>Fund donated</th>
+              <th>Date</th>
+              <th>Payment method</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of panel.UserName">
+              <td>{{data.charity_name}}</td>
+              <td>{{data.donations}}</td>
+              <td>{{data.date}}</td>
+              <td>{{data.payment}}</td>
+              <td>
+                <nz-divider nzType="vertical"></nz-divider>
+                <a>Delete</a>
+              </td>
+            </tr>
+          </tbody>
+        </nz-table>
+    </nz-collapse-panel>
+    <nz-pagination [nzPageIndex]="1" [nzTotal]="500" [nzItemRender]="renderItemTemplate" style="float:right;"></nz-pagination>
+    <ng-template #renderItemTemplate let-type let-page="page">
+      <a *ngIf="type==='pre'">Previous</a>
+      <a *ngIf="type==='next'">Next</a>
+      <a *ngIf="type==='page'">{{page}}</a>
+    </ng-template>
+  </nz-collapse>
+</section>

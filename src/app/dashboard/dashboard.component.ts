@@ -130,45 +130,51 @@ export class DashboardComponent implements OnInit {
   userTable = [
     {
       key    : '1',
-      name   : 'John Brown',
-      age    : 32,
+      user_name   : 'John Brown',
+      email: 'test@gmail.com',
       address: 'New York No. 1 Lake Park',
-      fund   : '$200'
+      fund   : '$200',
+      goal_balence: 70
     },
     {
       key    : '2',
-      name   : 'Jim Green',
-      age    : 42,
+      user_name   : 'Jim Green',
+      email: 'test@gmail.com',
       address: 'London No. 1 Lake Park',
       fund   : '$200',
+      goal_balence: 70
     },
     {
       key    : '3',
-      name   : 'Joe Black',
-      age    : 32,
+      user_name   : 'Joe Black',
+      email: 'test@gmail.com',
       address: 'Sidney No. 1 Lake Park',
-      fund   : '$200'
+      fund   : '$200',
+      goal_balence: 70
     },
     {
       key    : '3',
-      name   : 'Joe Black',
-      age    : 32,
+      user_name   : 'Joe Black',
+      email: 'test@gmail.com',
       address: 'Sidney No. 1 Lake Park',
-      fund   : '$200'
+      fund   : '$200',
+      goal_balence: 70
     },
     {
       key    : '3',
-      name   : 'Joe Black',
-      age    : 32,
+      user_name   : 'Joe Black',
+      email: 'test@gmail.com',
       address: 'Sidney No. 1 Lake Park',
-      fund   : '$200'
+      fund   : '$200',
+      goal_balence: 70
     },
     {
       key    : '3',
-      name   : 'Joe Black',
-      age    : 32,
+      user_name   : 'Joe Black',
+      email: 'test@gmail.com',
       address: 'Sidney No. 1 Lake Park',
-      fund   : '$200'
+      fund   : '$200',
+      goal_balence: 70
     }
   ];
 }

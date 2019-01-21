@@ -36,7 +36,8 @@ body {
 }
 
 /* Profile dropdown */
-nz-dropdown-button {
+nz-dropdown-button { 
   margin-right: 25px;
   float: right;
 }
+

@@ -5,8 +5,8 @@
         <tr>
           <th nzWidth="25%">Charity Name</th>
           <th nzWidth="15%">Total funds</th>
-          <th nzWidth="40%">Address</th>
-          <th>Action</th>
+          <th nzWidth="30%">description</th>
+          <th nzWidth="20%">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -54,16 +54,23 @@
           <td>
             <div class="editable-row-operations">
               <ng-container *ngIf="!editCache[data.key].edit">
+              <span style="padding: 1rem;">
                 <a (click)="startEdit(data.key)">Edit</a>
+              </span>
+               <span>
                 <a (click)="startDelete(data.key)">Delete</a>
+               </span> 
               </ng-container>
               <ng-container *ngIf="editCache[data.key].edit">
+               <span style="padding: 1rem;"> 
                 <a (click)="saveEdit(data.key)">Save</a>
+               </span> 
                 <nz-popconfirm
                   [nzTitle]="'Sure to cancel?'"
-                  (nzOnConfirm)="cancelEdit(data.key)"
-                >
+                  (nzOnConfirm)="cancelEdit(data.key)">
+                <span>
                   <a nz-popconfirm>Cancel</a>
+                </span>  
                 </nz-popconfirm>
               </ng-container>
             </div>
