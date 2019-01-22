@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { AppSettings } from '../../src/app/app.settings';
-import 'rxjs/add/operator/map';
 import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
+import 'rxjs/add/operator/map';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +10,12 @@ import { Observable, Subject } from 'rxjs';
 export class ServicesService {
 
   constructor(private http:HttpClient,private router:Router) { }
+
+  public charityList(){
+    let url = AppSettings.BASE_URL + AppSettings.CHARITY_URL;
+    return this.http.get(url).map((data) => {return data} )
+  }
 }
+
 
 

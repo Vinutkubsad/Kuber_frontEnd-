@@ -13,8 +13,14 @@ export class FilterPipe implements PipeTransform {
             return items;
         }
 
-        return items.filter(singleItem =>
-            singleItem[field].toLowerCase().includes(value.toLowerCase())
-        );
+        value = value.toLocaleLowerCase();
+        return items.filter((item) =>{
+            var match = item[field].toLocaleLowerCase();
+            return match.indexOf(value) !== -1
+        });
     }
 }
+
+
+
+

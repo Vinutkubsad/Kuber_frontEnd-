@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { ServicesService } from '../services.service';
 
 
 @Component({
@@ -10,13 +11,30 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
+  charityCount:Number;
+
+  public charityValue = [];
   public searchString: string;
 
-  constructor( private router: Router) { }
+  constructor( private router: Router, private service: ServicesService ) { }
+  
+  ngOnInit() { 
+    this.charityList();
+  }
+  
+  charityList(){
+    this.service.charityList().subscribe((response) => {
+      // console.log(response["response"].charity);
+       this.charityCount = response["response"].count;
+       this.charityValue =response["response"].charity;
+       console.log(this.charityValue);
+    } )
+  }
 
-  ngOnInit() { }
   
 
+  
+  
   charityTable() {
     this.router.navigate(['charitytabels'])
   }
@@ -83,48 +101,7 @@ export class DashboardComponent implements OnInit {
     console.log(`onSelect ${suggestion}`);
   }
 
-  charitySet = [
-    {
-      key    : '1',
-      name   : 'Heart foundation',
-      address: 'New York No. 1 Lake Park',
-      funds: '$',
-      progress: '30',
-      rating: 2.1
-    },
-    {
-      key    : '2',
-      name   : 'Accion Foundation',
-      funds: '$',
-      address: 'London No. 1 Lake Park',
-      progress: '50',
-      rating: 2.5
-    },
-    {
-      key    : '3',
-      name   : 'Kuber Foundation',
-      funds: '$',
-      address: 'Sidney No. 1 Lake Park',
-      progress: '30',
-      rating: 1
-    },
-    {
-      key    : '2',
-      name   : 'Accion Foundation',
-      funds: '$',
-      address: 'London No. 1 Lake Park',
-      progress: '50',
-      rating: 4
-    },
-    {
-      key    : '2',
-      name   : 'Accion Foundation',
-      funds: '$',
-      address: 'London No. 1 Lake Park',
-      progress: '50',
-      rating: 3
-    },
-  ];
+
 
   // user-detail-table
   userTable = [
