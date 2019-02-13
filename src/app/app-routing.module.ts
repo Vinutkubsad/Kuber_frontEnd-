@@ -30,6 +30,6 @@ export const routes: Routes = [
   { path: 'usercharts', component: UserChartsComponent },
   { path: 'charitytable', component: CharityTablesComponent },
   { path: 'charitycharts', component: CharityChartsComponent },
-  { path: 'addcharity', component: AddCharityComponent },
+  { path: 'add-charity', component: AddCharityComponent },
   { path: '*', component: AdminLoginComponent }
 ];

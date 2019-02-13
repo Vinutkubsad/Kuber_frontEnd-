@@ -23,8 +23,7 @@
   </section>
 
   <!-- Chart details -->
-
-  <section class="graph-info">
+  <!-- <section class="graph-info">
     <div class="bar-graph">
       <div style="display: block">
         <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
@@ -38,7 +37,7 @@
           (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- Charity tables -->
   <section class="wrap-table">
@@ -52,19 +51,15 @@
           <tr>
             <th>Charity Name</th>
             <th>Description</th>
-            <th>Progress</th>
             <th>Funds</th>
             <th>Ratings</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="
-              let data of charityValue | filter : 'charityName' :searchString">
-            <td style="width:10%;">{{ data.charityName }}</td>
+              let data of charityResult | filter : 'charityName' :searchString">
+            <td style="width:30%;">{{ data.charityName }}</td>
             <td style="width:30%;">{{ data.description }}</td>
-            <td style="width: 35%;">
-              <nz-progress [nzPercent]="data.progress"></nz-progress>
-            </td>
             <td>{{ data.funds }}</td>
             <td>
               <nz-rate [ngModel]="data.rating" nzDisabled></nz-rate>
@@ -74,7 +69,8 @@
       </nz-table>
     </div>
   </section>
-
+  
+<!-- User details Tables -->
   <section class="user-dteail">
     <p>User Details</p>
     <nz-table #basicTable [nzData]="userTable">

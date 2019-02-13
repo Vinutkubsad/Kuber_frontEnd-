@@ -15,19 +15,19 @@ export class UserTablesComponent implements OnInit {
   panels = [
     {
       active    : true,
-      name      : 'Vinut',
+      name      : 'User 1',
       UserName : [
         {
           key    : '1',
-          charity_name   : 'John Brown',
-          donations    : 32,
+          charity_name   : 'Heart Foundation',
+          donations    : '100$',
           date: '21/01/2019',
           paymentType: 'bank type'
         },
         {
           key    : '2',
-          charity_name   : 'Jim Green',
-          donations    : 32,
+          charity_name   : 'Child foundation',
+          donations    : '100$',
           date: '21/01/2019',
           paymentType: 'bank type'
         }
@@ -41,7 +41,7 @@ export class UserTablesComponent implements OnInit {
     },
     {
       active: false,
-      name  : 'This is panel header 2',
+      name  : 'User 2',
       UserName : [
         {
           key    : '1',
@@ -61,11 +61,11 @@ export class UserTablesComponent implements OnInit {
     },
     {
       active: false,
-      name  : 'This is panel header 3'
+      name  : 'User 3'
     },
     {
       active: false,
-      name  : 'This is panel header 4'
+      name  : 'User 4'
     }
   ]; 
 }

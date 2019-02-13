@@ -22,10 +22,11 @@
     "@angular/router": "^6.1.0",
     "chart.js": "^2.7.3",
     "core-js": "^2.5.4",
-    "ng-zorro-antd": "^7.0.0-rc.1",
+    "ng-zorro-antd": "^7.0.0-rc.3",
     "ng2-charts": "^1.6.0",
     "rxjs": "~6.2.0",
     "rxjs-compat": "^6.3.3",
+    "sweetalert2": "^8.0.7",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

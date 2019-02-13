@@ -9,6 +9,10 @@
   --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
 } */
 
+hr {
+  margin: 26px -25px -27px -24px;
+  box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
 
 /* Boxes */
 .boxes {
@@ -18,16 +22,32 @@
 }
 
 .box {
-  background: #ddd;
+  background: #fff;
   text-align: center;
-  padding: 1.5rem 2rem;
+  padding: 1.2rem 2rem;
   box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
 }
 
+.boxes h3 {
+  margin-top: 5px;
+  color: darkblue;
+  font-weight: bolder;
+  font-family: unset;
+  font-size: 1.5rem;
+}
+
+.boxes p {
+  margin: 10px;
+  color: #333;
+}
+
+.boxes .box i {
+  color: lightskyblue;
+}
 /* Graph Inf0 */
 .graph-info {
   margin-top: 2rem;
-  background: #ddd;
+  background: #fff;
   box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
   display: grid;
   grid-gap: 30px;
@@ -37,13 +57,13 @@
 
 /* tables */
 .wrap-table {
-  background: #ddd;
+  background: #fff;
   margin-top: 3rem;
   box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
 }
 
 .user-dteail{
-  background: #ddd;
+  background: #fff;
   margin-top: 3rem;
   box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
 }

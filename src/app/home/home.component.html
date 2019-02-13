@@ -1,45 +1,52 @@
 <!-- NG-ZORRO -->
 <nz-layout >
-  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="triggerTemplate" st >
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="triggerTemplate">
     <div class="logo"></div>
     <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
-      <li nz-submenu>
+      <li nz-submenu [routerLink]="['./dashboard']" style="outline:none;">
         <span title>
-          <i nz-icon type="user"></i>
-          <span class="nav-text" [routerLink]="['./dashboard']">Dashboard</span>
+          <i nz-icon type="info-circle" theme="outline"></i><span class="nav-text">Dashboard</span>
         </span>
       </li>
       <li nz-submenu>
         <span title>
-          <i nz-icon type="team"></i><span class="nav-text">Tables</span></span>
+          <i nz-icon type="table" theme="outline"></i><span class="nav-text">Tables</span>
+        </span>
         <ul>
           <li nz-menu-item><a [routerLink]="['./charitytable']">Charity Tables</a></li>
           <li nz-menu-item><a [routerLink]="['./usertables']">User Tables</a></li>
         </ul>
       </li>
-      <li nz-submenu>
+      <!-- <li nz-submenu>
         <span title>
-          <i nz-icon type="team"></i><span class="nav-text">Charts</span></span>
+          <i nz-icon type="area-chart" theme="outline"></i><span class="nav-text">Charts</span></span>
         <ul>
           <li nz-menu-item><a [routerLink]="['./charitycharts']">Charity Charts</a></li>
           <li nz-menu-item><a [routerLink]="['./usercharts']">User Charts</a></li>
         </ul>
-      </li>
+      </li> -->
     </ul>
+    <button nz-button type="primery" class="add-charity" [routerLink]="['./add-charity']" ><i nz-icon type="plus-circle" theme="fill"></i> Add Charity </button>
   </nz-sider>
   <nz-layout>
-    <nz-header style="background: #ddd; padding:0;">
-      <i class="trigger" nz-icon [type]="isCollapsed?'menu-unfold':'menu-fold'" (click)="isCollapsed=!isCollapsed"></i>
-      <nz-dropdown-button (nzClick)="log()">
-        Admin
+    <nz-header style="background: rgb(34, 36, 37); padding:0; position:sticky; z-index:500; width:100%;">
+      <i class="trigger" nz-icon [type]="isCollapsed?'menu-unfold':'menu-fold'" (click)="isCollapsed=!isCollapsed" style="color: #ddd;"></i>
+      <nz-dropdown>
+        <button nz-button nz-dropdown class="wrap-user"><span><img src="../../assets/images/profile.png" alt="profile"></span></button>
         <ul nz-menu>
-          <li nz-menu-item>Edit Profil</li>
-          <li nz-menu-item>Help</li>
-          <li nz-menu-item>Logout</li>
+          <li nz-menu-item>
+            <a>Edit profile</a>
+          </li>
+          <li nz-menu-item>
+            <a>Help</a>
+          </li>
+          <li nz-menu-item>
+            <a style="background: lightblue;">Logout</a>
+          </li>
         </ul>
-      </nz-dropdown-button>
+      </nz-dropdown>
     </nz-header>
-    <nz-content style="margin:0 16px;">
+    <nz-content style="background: #ddd;">
 
       <router-outlet></router-outlet>
 

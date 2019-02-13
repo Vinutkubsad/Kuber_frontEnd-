@@ -1,1 +1,1 @@
-var baseUrl = 'http://localhost:3001/'
+var baseUrl = 'https://kuber-application.herokuapp.com/'  

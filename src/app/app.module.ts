@@ -17,9 +17,9 @@ import { CharityTablesComponent } from './Tables/charity-tables/charity-tables.c
 import { UserTablesComponent } from './Tables/user-tables/user-tables.component';
 import { UserChartsComponent } from './Charts/user-charts/user-charts.component';
 import { CharityChartsComponent } from './Charts/charity-charts/charity-charts.component';
+import { AddCharityComponent } from './add-charity/add-charity.component'
 import { HomeComponent } from './home/home.component';
-import { AddCharityComponent } from './add-charity/add-charity.component';
-import { FilterPipe } from './charity-search.pipe';
+ import { FilterPipe } from './charity-search.pipe';
 
 
 registerLocaleData(en);
