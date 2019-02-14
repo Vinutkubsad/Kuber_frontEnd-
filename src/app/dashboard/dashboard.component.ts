@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ServicesService } from '../services/services.service';
+import { ServicesService } from '../services/charityServices.service';
 
 
 @Component({
@@ -22,11 +22,11 @@ export class DashboardComponent implements OnInit {
   constructor( private router: Router, private service: ServicesService ) { }
   
   ngOnInit() { 
-    this.charityList();
+    this.getCharityList();
   }
   
-  charityList(){
-    this.service.charityList().subscribe((response) => {
+  getCharityList(){
+    this.service.getCharityList().subscribe((response) => {
       console.log(response);
       this.charityResult = response['result'];
       //  this.charityResult = response["response"];

@@ -19,8 +19,8 @@ import { UserChartsComponent } from './Charts/user-charts/user-charts.component'
 import { CharityChartsComponent } from './Charts/charity-charts/charity-charts.component';
 import { AddCharityComponent } from './add-charity/add-charity.component'
 import { HomeComponent } from './home/home.component';
- import { FilterPipe } from './charity-search.pipe';
-
+import { FilterPipe } from './charity-search.pipe';
+import swal from 'sweetalert';
 
 registerLocaleData(en);
 
@@ -46,7 +46,7 @@ registerLocaleData(en);
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    ChartsModule
+    ChartsModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

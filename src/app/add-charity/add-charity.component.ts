@@ -1,9 +1,12 @@
 import { Component, OnInit } from "@angular/core";
-import { Charity } from './shared/charity.model';
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { NzMessageService, UploadFile } from "ng-zorro-antd";
 import { from } from "rxjs";
-import { ServicesService } from '.././services/services.service';
+import { ServicesService } from '../services/charityServices.service';
+import { Charity } from './shared/charity.model';
+import { NgForm } from '@angular/forms'
+import swal from 'sweetalert';
+
 
 
 @Component({
@@ -30,21 +33,80 @@ export class AddCharityComponent implements OnInit {
   ];
 
 
-  constructor(private service : ServicesService, private fb: FormBuilder, private msg: NzMessageService) {}
-  public charityName: any;
-  public email: any;
-  public description : any;
-  public adress: any;
-  public city: any;
-  public state: any;
-  public zipCode: any;
+  constructor( private charityServices : ServicesService, private fb: FormBuilder, private msg: NzMessageService) { }
 
-  submitForm(): void {
-    for (const i in this.validateForm.controls) {
-      this.validateForm.controls[i].markAsDirty();
-      this.validateForm.controls[i].updateValueAndValidity();
+  // public charityName: any;
+  // public email: any;
+  // public description : any;
+  // public adress: any;
+  // public city: any;
+  // public state: any;
+  // public zipCode: any;
+
+  ngOnInit(): void {
+    this.resetForm();
+    // this.refreshCharityList();
+    this.validateForm = this.fb.group({
+      charityName: [null, [Validators.required]],
+      // email: [null, [Validators.email, Validators.required]],
+      description: [null, [Validators.required]],
+      adress: [null, [Validators.required]],
+      city: [null,[Validators.required]],
+      pinCode: [null,[Validators.required]],
+      state:[null,[Validators.required]],
+    });
+  }
+
+  resetForm(form?: NgForm) {
+    if (form)
+      form.reset();
+    this.charityServices.slectedCharity = {
+      _id:'',
+      charityName:'',
+      email:'',
+      description:'', 
+      adress:'',
+      city:'',
+      state:'',
+      zipCode: null
     }
-    this.submitCharity();
+  }
+  // refreshCharityList() {
+  //   this.charityServices.getCharityList().subscribe((res) => {
+  //     this.charityServices.charities = res as Charity[];
+  //   });
+  // }
+
+  submitForm(form: NgForm ){
+    if (this.validateForm.valid) {
+      console.log("form Submited", this.validateForm.value);
+      this.charityServices.postCharty(this.validateForm.value).subscribe((res) =>{
+        console.log(res);
+        if (res){
+          swal("Succefully Added", "success");
+          this.validateForm.reset();
+        }else {
+          swal("Something is missing", "Error");
+        }
+      });
+    } else {
+      swal("Please enter valid data", "Error");
+    }
+    // if (form.value._id == "") {
+    //   this.charityServices.postCharty(form.value).subscribe((res) => {
+    //     console.log(res);
+    //     for (const i in this.validateForm.controls) {
+    //       this.validateForm.controls[i].markAsDirty();
+    //       this.validateForm.controls[i].updateValueAndValidity();
+    //     }
+    //     this.resetForm();
+    //     // this.refreshCharityList();
+    //     swal("Succefully Added", "success");
+    //   });
+    // }
+    // else {
+    //   swal("Something is missing", "Error");
+    // } 
   }
 
   updateConfirmValidator(): void {
@@ -61,40 +123,9 @@ export class AddCharityComponent implements OnInit {
       return { confirm: true, error: true };
     }
   };
-
-  ngOnInit(): void {
-    this.validateForm = this.fb.group({
-      charityName: [null, [Validators.required]],
-      // email: [null, [Validators.email, Validators.required]],
-      description: [null, [Validators.required]],
-      adress: [null, [Validators.required]],
-      city: [null,[Validators.required]],
-      pinCode: [null,[Validators.required]],
-      state:[null,[Validators.required]],
-    });
-  }
+  
   submitCharity() {
     console.log('click')
-    var data={
-      "charityName":this.charityName,
-      "description":this.description,
-      "address":this.adress,
-      "city":this.city,
-      "state":this.state,
-      "zipcode":this.zipCode,
-      // "charitylogo":this.charitylogo
-    }
-    this.service.addCharty(data).subscribe((Response)=>{
-      console.log(Response);
-      this.charityName=null;
-      this.city=null;
-      this.adress=null;
-      this.state=null;
-      this.zipCode=null;
-      this.description=null;
-      // this.charitylogo=null;
-    });
-    alert('addes succefully');
   }     
 
   // image Upload

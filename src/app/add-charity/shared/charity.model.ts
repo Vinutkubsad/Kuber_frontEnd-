@@ -1,4 +1,5 @@
 export class Charity {
+  _id: string;
   charityName: string;
   email:string;
   description:string; 
