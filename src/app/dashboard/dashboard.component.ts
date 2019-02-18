@@ -29,13 +29,18 @@ export class DashboardComponent implements OnInit {
 
   getCharityList() {
     this.service.getCharityList().subscribe(response => {
-      console.log(response);
+      // console.log(response);
       this.charityResult = response["result"];
     });
   }
 
+  
   onEdit(edit) {
     this.router.navigate(["updateCharity/", edit]);
+  }
+
+  refresh(){
+    window.location.reload();
   }
 
   onDelete(_id: string, form: NgForm) {
@@ -50,6 +55,7 @@ export class DashboardComponent implements OnInit {
       if (result.value) {
         this.service.deleteCharity(_id).subscribe(res => {
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          this.refresh();
         });
       }
     });

@@ -52,7 +52,8 @@ export class AddCharityComponent implements OnInit {
       address: [null, [Validators.required]],
       city: [null, [Validators.required]],
       zipcode: [null, [Validators.required]],
-      state: [null, [Validators.required]]
+      state: [null, [Validators.required]],
+      suggested:[null]
     });
   }
 
