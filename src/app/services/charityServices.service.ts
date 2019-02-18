@@ -26,6 +26,16 @@ export class ServicesService {
     let url = AppSettings.BASE_URL + AppSettings.Add_CHARITY_URL;
     return this.http.post(url,data)
   }
+
+  deleteCharity(_id: String){
+    let url = AppSettings.BASE_URL + AppSettings.DELETE_CHARITY_URL;
+    return this.http.delete(`${url}/${_id}`);
+  }
+
+  suggestedCharity(data: Charity){
+    let url = AppSettings.BASE_URL + AppSettings.SUGGESTED_CHARITY;
+    return this.http.get(url);
+  }
 }
 
 

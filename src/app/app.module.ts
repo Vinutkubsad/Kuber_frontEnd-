@@ -21,6 +21,7 @@ import { AddCharityComponent } from './add-charity/add-charity.component'
 import { HomeComponent } from './home/home.component';
 import { FilterPipe } from './charity-search.pipe';
 import swal from 'sweetalert';
+import { UpdateCharityComponent } from './add-charity/update-charity/update-charity.component';
 
 registerLocaleData(en);
 
@@ -35,7 +36,8 @@ registerLocaleData(en);
     CharityChartsComponent,
     HomeComponent,
     AddCharityComponent,
-    FilterPipe
+    FilterPipe,
+    UpdateCharityComponent
   ],
   imports: [
     BrowserModule,

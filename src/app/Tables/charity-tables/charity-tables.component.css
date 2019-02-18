@@ -1,14 +1,36 @@
-section {
+ section {
   margin: 2rem;
-  background-color: white;
+  background-color: #fff;
+  box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
 }
 
-.first-tabel {
+/*.first-tabel {
   background: #ddd;
   box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
 }
 
 .input {
   width: 40%;
-  margin: 1.6rem
+  margin: 1.6rem;
+}
+
+.editable-row-operations a {
+  margin-right: 8px;
+}
+*/
+.wrap-charitydetail {
+  background-color: #fff;
+  box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+} 
+
+.components-table-demo-control-bar {
+  margin-bottom: 10px;
+}
+.components-table-demo-control-bar ::ng-deep .ant-form-item {
+  margin-right: 15px;
+  margin-bottom: 8px;
+}
+
+.ant-table-content {
+  background-color: #fff;
 }

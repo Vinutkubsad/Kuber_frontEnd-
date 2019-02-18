@@ -3,8 +3,9 @@ export class Charity {
   charityName: string;
   email:string;
   description:string; 
-  adress:string;
+  address:string;
   city:string;
   state:string;
-  zipCode: number;
+  zipcode: number;
+  suggested: boolean;
 }

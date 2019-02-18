@@ -9,7 +9,7 @@ app.listen(process.env.PORT || 5050);
 // PathLocationStrategy
 
 app.get('/*', (req, res) =>{
-  res.sendFile(path.join(__dirname + './dist/index.html'));
+  res.sendFile(path.join(__dirname + '/dist/../src/index.html'));
 })
 
 console.log('console listining');

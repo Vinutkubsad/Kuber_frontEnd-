@@ -1,7 +1,9 @@
-<div class="wrap-charity">
+<!-- <div class="wrap-charity"> -->
+
   <!-- Logo Upload -->
 
-  <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+
+  <!-- <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
     <div class="clearfix">
       <nz-upload nzFor="charitylogo" nzAction="https://jsonplaceholder.typicode.com/posts/" nzListType="picture-card"
         [(nzFileList)]="fileList" [nzShowButton]="fileList.length < 1" [nzPreview]="handlePreview">
@@ -9,24 +11,23 @@
         <div class="ant-upload-text">Upload Charity Logo</div>
       </nz-upload>
       <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null"
-        (nzOnCancel)="previewVisible = false">
+        (nzOnCancel)="previewVisible=false">
         <ng-template #modalContent>
-          <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+          <img [src]="previewImage" [ngStyle]="{ 'width': '100%' }" />
         </ng-template>
       </nz-modal>
     </div>
+
 
     <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="charityName">Charity Name</nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24">
         <input nz-input formControlName="charityName" id="charityName"
-          [(ngModel)]="charityServices.slectedCharity.charityName" />
-        <nz-form-explain *ngIf="
-            validateForm.get('charityName').dirty &&
-            validateForm.get('charityName').errors
-          ">Enter Charity Name</nz-form-explain>
+          [(ngModel)]="charityServices.slectedCharity.charityName">
+        <nz-form-explain *ngIf="validateForm.get('charityName').dirty && validateForm.get('charityName').errors">Enter
+          Charity Name</nz-form-explain>
       </nz-form-control>
-    </nz-form-item>
+    </nz-form-item> -->
 
     <!-- <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
@@ -37,7 +38,7 @@
       </nz-form-control>
     </nz-form-item> -->
 
-    <nz-form-item>
+    <!-- <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="description" nzRequired>
         <span>
           Description
@@ -45,58 +46,48 @@
       </nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24">
         <input nz-input id="description" formControlName="description"
-          [(ngModel)]="charityServices.slectedCharity.description" />
-        <nz-form-explain *ngIf="
-            validateForm.get('description').dirty &&
-            validateForm.get('description').errors
-          ">
+          [(ngModel)]="charityServices.slectedCharity.description">
+        <nz-form-explain *ngIf="validateForm.get('description').dirty && validateForm.get('description').errors">
           Descripton cannot be blank</nz-form-explain>
       </nz-form-control>
     </nz-form-item>
 
     <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="address" nzRequired>Area/landmark</nz-form-label>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="adress" nzRequired>Adress</nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24">
-        <input nz-input id="address" formControlName="address" placeholder=""
-          [(ngModel)]="charityServices.slectedCharity.address" />
-        <nz-form-explain *ngIf="
-            validateForm.get('address').dirty &&
-            validateForm.get('address').errors
-          ">Adress cannot be blank</nz-form-explain>
+        <input nz-input id="adress" formControlName="adress" placeholder=""
+          [(ngModel)]="charityServices.slectedCharity.adress">
+        <nz-form-explain *ngIf="validateForm.get('adress').dirty && validateForm.get('adress').errors">Adress cannot be
+          blank</nz-form-explain>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="city" nzRequired>City</nz-form-label>
       <nz-form-control [nzSm]="4" [nzXs]="24">
         <input nz-input id="city" formControlName="city" placeholder=""
-          [(ngModel)]="charityServices.slectedCharity.city" />
-        <nz-form-explain *ngIf="
-            validateForm.get('city').dirty && validateForm.get('city').errors
-          ">Adress cannot be blank</nz-form-explain>
+          [(ngModel)]="charityServices.slectedCharity.city">
+        <nz-form-explain *ngIf="validateForm.get('city').dirty && validateForm.get('city').errors">Adress cannot be
+          blank</nz-form-explain>
       </nz-form-control>
       <nz-form-label [nzSm]="1" [nzXs]="24" nzFor="state" nzRequired>State</nz-form-label>
       <nz-form-control [nzSm]="4" [nzXs]="24">
         <input nz-input id="state" formControlName="state" placeholder=""
-          [(ngModel)]="charityServices.slectedCharity.state" />
-        <nz-form-explain *ngIf="
-            validateForm.get('state').dirty && validateForm.get('state').errors
-          ">Adress cannot be blank</nz-form-explain>
+          [(ngModel)]="charityServices.slectedCharity.state">
+        <nz-form-explain *ngIf="validateForm.get('state').dirty && validateForm.get('state').errors">Adress cannot be
+          blank</nz-form-explain>
       </nz-form-control>
-      <nz-form-label [nzSm]="2" [nzXs]="24" nzFor="zipcode" nzRequired>Zip-Code</nz-form-label>
+      <nz-form-label [nzSm]="2" [nzXs]="24" nzFor="pinCode" nzRequired>Zip-Code</nz-form-label>
       <nz-form-control [nzSm]="3" [nzXs]="24">
-        <input nz-input id="zipcode" formControlName="zipcode" placeholder=""
-          [(ngModel)]="charityServices.slectedCharity.zipCode" />
-        <nz-form-explain *ngIf="
-            validateForm.get('zipcode').dirty &&
-            validateForm.get('zipcode').errors
-          ">Adress cannot be blank</nz-form-explain>
+        <input nz-input id="pinCode" formControlName="pinCode" placeholder=""
+          [(ngModel)]="charityServices.slectedCharity.zipCode">
+        <nz-form-explain *ngIf="validateForm.get('pinCode').dirty && validateForm.get('pinCode').errors">Adress cannot
+          be blank</nz-form-explain>
       </nz-form-control>
     </nz-form-item>
 
     <nz-form-item>
       <nz-form-label [nzSm]="13" [nzXs]="">
-        <label nz-checkbox id="suggested"  [(ngModel)]="charityServices.slectedCharity.suggested"  [(nzChecked)]="charityServices.slectedCharity.suggested"  formControlName="suggested">
-          <span>
+        <label nz-checkbox [(ngModel)]="charityServices.slectedCharity.suggested" formControlName="suggested"> <span>
             Suggest charity for immediate fund donation
           </span>
         </label>
@@ -104,12 +95,10 @@
     </nz-form-item>
 
     <nz-form-item nz-row style="margin-bottom:8px;">
-      <nz-form-control [nzSpan]="14" [nzOffset]="8">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
         <button nz-button class="btn-register">Submit</button>
-        <button nz-button class="btn-view" (click)="onClickView()">
-          View Charities
-        </button>
+        <button nz-button class="btn-view" (click)="onClickView()">View Charities</button>
       </nz-form-control>
     </nz-form-item>
   </form>
-</div>
+</div> -->
